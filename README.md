@@ -1,3 +1,5 @@
+Some config and launch files specific to custom mono and mono-imu slam have been added.
+
 # ORB-SLAM3-ROS
 
 A ROS implementation of [ORB-SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3) V1.0 that focuses on the ROS part.
