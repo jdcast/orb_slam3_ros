@@ -57,11 +57,11 @@ Camera.width: 3840
 Camera.height: 2160
 
 # this seems to be necessary...not sure why the higher resolution doesn't work
-Camera.newWidth: 480 #960 #1920 #600
-Camera.newHeight: 270 #540 #1080 #350
+Camera.newWidth: 480 #640 #960 #1920 #600
+Camera.newHeight: 270 #480 #540 #1080 #350
 
 # Camera frames per second 
-Camera.fps: 12
+Camera.fps: 1 #12
 
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 1

@@ -28,7 +28,7 @@ Camera.newWidth: 480 #960 #1920 #600
 Camera.newHeight: 270 #540 #1080 #350
 
 # Camera frames per second 
-Camera.fps: 12
+Camera.fps: 1 #12
 
 # Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
 Camera.RGB: 1
@@ -40,25 +40,25 @@ IMU.T_b_c1: !!opencv-matrix
    dt: f
    # which one of these?
    # after cam-imu calibration
-   #   data: [-0.38246224030642584, -0.881849478065367, 0.2757972675274893, 1.700481948863835,
-   #           0.1965162100399, 0.2140256245698736, 0.9568565259321951, 0.2567812342545724,
-   #          -0.9028311104139819, 0.42016012431371347, 0.09144099739909403, 7.801515976655889,
-   #           0.0, 0.0, 0.0, 1.0]
-   # before cam-imu calibration
-   data: [-1.0, 0.0,0.0, 0.060,
-           0.0, 1.0, 0.0, 0.412,
-           0.0, 0.0, -1.0, -0.142,
+   data: [-0.38246224030642584, -0.881849478065367, 0.2757972675274893, 1.700481948863835,
+           0.1965162100399, 0.2140256245698736, 0.9568565259321951, 0.2567812342545724,
+          -0.9028311104139819, 0.42016012431371347, 0.09144099739909403, 7.801515976655889,
            0.0, 0.0, 0.0, 1.0]
+   # before cam-imu calibration
+   #data: [-1.0, 0.0,0.0, 0.060,
+   #        0.0, 1.0, 0.0, 0.412,
+   #        0.0, 0.0, -1.0, -0.142,
+   #        0.0, 0.0, 0.0, 1.0]
 
 # Do not insert KFs when recently lost
-IMU.InsertKFsWhenLost: 0
+IMU.InsertKFsWhenLost: 1
 
 # IMU noise (Use those from VINS-mono)
 IMU.NoiseGyro: 6.981317e-5 # 2.44e-4 #1e-3 # rad/s^0.5
 IMU.NoiseAcc: 9.8e-04 # 1.47e-3 #1e-2 # m/s^1.5
 IMU.GyroWalk: 1.0e-12 # rad/s^1.5
 IMU.AccWalk: 1.0e-12 # m/s^2.5
-IMU.Frequency: 10.0
+IMU.Frequency: 10 #100.0
 
 #--------------------------------------------------------------------------------------------
 # ORB Parameters
