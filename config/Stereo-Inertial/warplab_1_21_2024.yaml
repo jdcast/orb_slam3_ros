@@ -1,0 +1,123 @@
+%YAML:1.0
+
+#--------------------------------------------------------------------------------------------
+# System config
+#--------------------------------------------------------------------------------------------
+
+# When the variables are commented, the system doesn't load a previous session or not store the current one
+
+# If the LoadFile doesn't exist, the system give a message and create a new Atlas from scratch
+# System.LoadAtlasFromFile: "MapEuRoCMH_StereoImu"
+
+# The store file is created from the current session, if a file with the same name exists it is deleted
+# System.SaveAtlasToFile: "MapEuRoCMH_StereoImu"
+
+#--------------------------------------------------------------------------------------------
+# Camera Parameters. Adjust them!
+#--------------------------------------------------------------------------------------------
+File.version: "1.0"
+
+Camera.type: "PinHole"
+
+# Camera calibration and distortion parameters (OpenCV) 
+Camera1.fx: 360.7286211135278  
+Camera1.fy: 360.9401286006334
+Camera1.cx: 475.6098798179776
+Camera1.cy: 295.35591767462705
+
+Camera1.k1: -0.0001039356421253348
+Camera1.k2: -0.00027360776071555363
+Camera1.p1: 0.00027873187366859244
+Camera1.p2: -9.888191787500305e-05
+
+Camera2.fx: 360.9861424901856 
+Camera2.fy: 361.11349297717334
+Camera2.cx: 476.4350459372943
+Camera2.cy: 294.7128500319178
+
+Camera2.k1: 9.603847469195109e-05 
+Camera2.k2: -0.00019261340532050893
+Camera2.p1: -0.00010643507263718193
+Camera2.p2: 0.00014379310546557542
+
+Camera.width: 960
+Camera.height: 600
+
+#Camera.newWidth: 480 #960 #1920 #600
+#Camera.newHeight: 300 #540 #1080 #350
+
+# Camera frames per second 
+Camera.fps: 15
+
+# Color order of the images (0: BGR, 1: RGB. It is ignored if images are grayscale)
+Camera.RGB: 1
+
+# Close/Far threshold. Baseline times.
+Stereo.ThDepth: 60.0
+Stereo.T_c1_c2: !!opencv-matrix
+  rows: 4
+  cols: 4
+  dt: f
+  data: [ 9.99999422e-01, 1.54369786e-04, -1.06388810e-03, 0.05056216,
+          -1.55536463e-04, 9.99999387e-01, -1.09662135e-03, -0.00033757,
+          1.06371816e-03, 1.09678619e-03, 9.99998833e-01, -0.00030845,
+          0.0, 0.0, 0.0, 1.0 ]
+
+
+# Transformation from camera 0 to body-frame (imu)
+IMU.T_b_c1: !!opencv-matrix
+  rows: 4
+  cols: 4
+  dt: f
+  data: [-0.00641742, -0.00605324, 0.99996109, 0.01093038,
+         -0.99996417, -0.00548212, -0.00645063, 0.03556941,
+         0.00552096, -0.99996665, -0.00601785, 0.00688649,
+         0.0, 0.0, 0.0, 1.0]
+
+# Insert KFs when recently lost
+IMU.InsertKFsWhenLost: 1
+
+# IMU noise
+IMU.NoiseGyro: 8.6e-05
+IMU.NoiseAcc:  0.0014
+IMU.GyroWalk: 2.2e-06
+IMU.AccWalk: 8.0e-05
+IMU.Frequency: 250.0
+
+System.thFarPoints: 20.0  # In outdoors, we ignore points too far away
+
+#--------------------------------------------------------------------------------------------
+# ORB Parameters
+#--------------------------------------------------------------------------------------------
+
+# ORB Extractor: Number of features per image
+ORBextractor.nFeatures: 1500 #1250 #1200
+
+# ORB Extractor: Scale factor between levels in the scale pyramid 	
+ORBextractor.scaleFactor: 1.2
+
+# ORB Extractor: Number of levels in the scale pyramid	
+ORBextractor.nLevels: 8
+
+# ORB Extractor: Fast threshold
+# Image is divided in a grid. At each cell FAST are extracted imposing a minimum response.
+# Firstly we impose iniThFAST. If no corners are detected we impose a lower value minThFAST
+# You can lower these values if your images have low contrast			
+ORBextractor.iniThFAST: 20
+ORBextractor.minThFAST: 7
+
+#--------------------------------------------------------------------------------------------
+# Viewer Parameters
+#--------------------------------------------------------------------------------------------
+Viewer.KeyFrameSize: 0.05
+Viewer.KeyFrameLineWidth: 1.0
+Viewer.GraphLineWidth: 0.9
+Viewer.PointSize: 2.0
+Viewer.CameraSize: 0.08
+Viewer.CameraLineWidth: 3.0
+Viewer.ViewpointX: 0.0
+Viewer.ViewpointY: -1.7
+Viewer.ViewpointZ: 0.8
+Viewer.ViewpointF: -500.0
+Viewer.imageViewScale: 1.0
+
